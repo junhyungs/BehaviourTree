@@ -15,8 +15,6 @@ public class TaskPatrol : Node
     private float _waitCounter = 0f;
     private bool _waiting = false;
 
-
-
     public TaskPatrol(Transform transform, Transform[] wayPoints)
     {
         _transform = transform;
@@ -44,11 +42,11 @@ public class TaskPatrol : Node
                 _waitCounter = 0f;
                 _waiting = true;
 
-                _currentWayPointIndex = (_currentWayPointIndex + 1) % _wayPoints.Length;
+                _currentWayPointIndex = (_currentWayPointIndex + 1) % _wayPoints.Length; //모듈로 연산. 배열의 크기를 초과하지 않도록 순환하기 위해 모듈로 연산을 적용.
             }
             else
             {
-                _transform.position = Vector3.MoveTowards(_transform.position, wayPoint.position, 10f * Time.deltaTime);
+                _transform.position = Vector3.MoveTowards(_transform.position, wayPoint.position, GuardBehaviourTree._speed * Time.deltaTime);
                 _transform.LookAt(wayPoint.position);
             }
         }
