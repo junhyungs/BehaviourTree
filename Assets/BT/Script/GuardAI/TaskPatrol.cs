@@ -9,15 +9,19 @@ public class TaskPatrol : Node
     private Transform _transform;
     private Transform[] _wayPoints;
 
+    private Animator _animator;
+
+
     //Patrol
     private int _currentWayPointIndex = 0;
     private float _waitTime = 1f;
     private float _waitCounter = 0f;
-    private bool _waiting = false;
+    private bool _waiting = true;
 
-    public TaskPatrol(Transform transform, Transform[] wayPoints)
+    public TaskPatrol(Transform transform, Transform[] wayPoints, GuardBehaviourTree guard)
     {
         _transform = transform;
+        _animator = transform.GetComponent<Animator>();
         _wayPoints = wayPoints;
     }
 
@@ -25,10 +29,11 @@ public class TaskPatrol : Node
     {
         if (_waiting)
         {
-            _waitTime += Time.deltaTime;
+            _waitCounter += Time.deltaTime;
 
             if(_waitCounter >= _waitTime)
             {
+                _animator.SetBool("Move", true);
                 _waiting = false;
             }
         }
@@ -41,6 +46,7 @@ public class TaskPatrol : Node
                 _transform.position = wayPoint.position;
                 _waitCounter = 0f;
                 _waiting = true;
+                _animator.SetBool("Move", false);
 
                 _currentWayPointIndex = (_currentWayPointIndex + 1) % _wayPoints.Length; //모듈로 연산. 배열의 크기를 초과하지 않도록 순환하기 위해 모듈로 연산을 적용.
             }

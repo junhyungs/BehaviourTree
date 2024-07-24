@@ -590,6 +590,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4355546310467608454}
   - component: {fileID: 2336414702374687134}
+  - component: {fileID: 6301915576958149452}
   m_Layer: 0
   m_Name: Knight
   m_TagString: Untagged
@@ -624,7 +625,7 @@ Animator:
   m_GameObject: {fileID: 5950244506156888424}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: ba24e610e0a338545b447ff44a3cf1cc, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 83c9c1e99eab7444c9956b0550bbaea1, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -635,6 +636,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6301915576958149452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5950244506156888424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a6037bb79aa6e84b8f51d86cc7307db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wayPoints: []
 --- !u!1 &6036860241939827446
 GameObject:
   m_ObjectHideFlags: 0
