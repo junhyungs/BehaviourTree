@@ -16,6 +16,11 @@ public class GuardBehaviourTree : Tree
         {
             new Sequence(new List<Node>
             {
+                new CheckEnemyInAttackRange(transform),
+                new TaskAttack(transform),
+            }),
+            new Sequence(new List<Node>
+            {
                 new CheckEnemyInFovRange(transform),
                 new TaksGoTarget(transform),
             }),

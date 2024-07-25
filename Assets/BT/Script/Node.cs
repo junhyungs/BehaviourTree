@@ -73,6 +73,7 @@ namespace BehaviourTree
         {
             if (_dataContext.ContainsKey(key))
             {
+                _dataContext.Remove(key);
                 return true;
             }
 
