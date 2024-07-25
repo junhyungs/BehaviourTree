@@ -26,6 +26,8 @@ public class _Selector : INode
                     return INode.BTNodeState.Running;
                 case INode.BTNodeState.Success:
                     return INode.BTNodeState.Success;
+                case INode.BTNodeState.Fail:
+                    continue;
             }
         }
 

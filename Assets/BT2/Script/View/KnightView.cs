@@ -76,6 +76,11 @@ public class KnightView : MonoBehaviour
 
     private INode.BTNodeState Patrol()
     {
+        if(_wayPoints == null || _wayPoints.Length == 0)
+        {
+            return INode.BTNodeState.Fail;
+        }
+
         if (isWaiting)
         {
             _waitCounter += Time.deltaTime;
@@ -98,6 +103,8 @@ public class KnightView : MonoBehaviour
                 _animator.SetBool("Move", false);
 
                 _currentWayPointIndex = (_currentWayPointIndex + 1) % _wayPoints.Length;
+
+                return INode.BTNodeState.Success;
             }
             else
             {
@@ -129,6 +136,11 @@ public class KnightView : MonoBehaviour
     }
     private INode.BTNodeState MoveToTarget()
     {
+        if(_enemy == null)
+        {
+            return INode.BTNodeState.Fail;
+        }
+
         Transform target = _enemy.transform;
 
         if(Vector3.Distance(transform.position,target.position) > 0.01f)
@@ -162,6 +174,11 @@ public class KnightView : MonoBehaviour
 
     private INode.BTNodeState Attack()
     {
+        if(_enemy == null)
+        {
+            return INode.BTNodeState.Fail;
+        }
+
         Transform target = _enemy.transform;
 
         if(target != _lastTarget)
