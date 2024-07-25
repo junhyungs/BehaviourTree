@@ -7,6 +7,7 @@ public class GuardBehaviourTree : Tree
 
     public static float _speed = 2f;
     public static float _fovRange = 6f;
+    public static float _attackRange = 1f;
     protected override Node SetUpTree()
     {
         //Node root = new TaskPatrol(transform, _wayPoints); //업캐스팅
