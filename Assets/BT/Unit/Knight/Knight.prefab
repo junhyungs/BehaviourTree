@@ -648,7 +648,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a6037bb79aa6e84b8f51d86cc7307db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPoints: []
+  _wayPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &6036860241939827446
 GameObject:
   m_ObjectHideFlags: 0

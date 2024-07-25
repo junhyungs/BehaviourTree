@@ -18,7 +18,7 @@ public class TaskPatrol : Node
     private float _waitCounter = 0f;
     private bool _waiting = true;
 
-    public TaskPatrol(Transform transform, Transform[] wayPoints, GuardBehaviourTree guard)
+    public TaskPatrol(Transform transform, Transform[] wayPoints)
     {
         _transform = transform;
         _animator = transform.GetComponent<Animator>();
@@ -53,11 +53,20 @@ public class TaskPatrol : Node
             else
             {
                 _transform.position = Vector3.MoveTowards(_transform.position, wayPoint.position, GuardBehaviourTree._speed * Time.deltaTime);
-                _transform.LookAt(wayPoint.position);
+                Rotation(wayPoint);
             }
         }
 
         _state = NodeState.Running;
         return _state;
+    }
+
+    private void Rotation(Transform wayPoint)
+    {
+        Vector3 moveDirection = (wayPoint.position - _transform.position).normalized;
+
+        Quaternion rotation = Quaternion.LookRotation(moveDirection);
+
+        _transform.rotation = Quaternion.Slerp(_transform.rotation, rotation, 10f * Time.deltaTime);
     }
 }
